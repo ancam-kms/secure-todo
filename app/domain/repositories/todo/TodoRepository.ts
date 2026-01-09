@@ -4,9 +4,9 @@ import { AddTodoInput, Todo } from "../../entities/todo";
 
 export interface TodoRepository {
   getTodos(): Promise<Todo[]>;
-  addTodo(todo: AddTodoInput): Promise<void>;
+  addTodo(todo: AddTodoInput): Promise<Todo>;
   deleteTodo(id: string): Promise<void>;
-  updateTodo(todo: Todo): Promise<void>;
+  updateTodo(todo: Todo): Promise<Todo>;
   getById(id: string): Promise<Todo | null>;
   getTodosPage(params: PaginationParams): Promise<PaginatedResult<Todo>>;
 }

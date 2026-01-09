@@ -56,7 +56,7 @@ export default StyleSheet.create({
 
     },
     rightAction: {
-      width: '100%',
+      width: '120%',
       height: '100%',
       margin: 2,
       borderBottomRightRadius: 8,
@@ -67,7 +67,9 @@ export default StyleSheet.create({
     },
     rightDeleteText: {
       color: '#fff',
-      paddingHorizontal: 6,
+      fontWeight: '600',
+      paddingLeft: 12,
+      paddingRight: 2,
     }
   });
   
