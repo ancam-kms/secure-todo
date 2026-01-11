@@ -1,9 +1,9 @@
-import { TodoRepository } from "../..//domain/repositories/todo/TodoRepository";
-import { Todo } from "../../domain/entities/todo";
-import { storage } from "../storage/mmkv";
+import { TodoRepository } from '../..//domain/repositories/todo/TodoRepository';
+import { Todo } from '../../domain/entities/todo';
+import { storage } from '../storage/mmkv';
 
 const TODO_BY_ID_KEY = (id: string) => `TODO_BY_ID_${id}`;
-const TODO_IDS_KEY = "TODO_IDS";
+const TODO_IDS_KEY = 'TODO_IDS';
 
 export class MMKVTodoRepository implements TodoRepository {
   private getIds(): string[] {
@@ -32,7 +32,7 @@ export class MMKVTodoRepository implements TodoRepository {
         todos.push(parsed);
       }
     }
-    return todos;    
+    return todos;
   }
 
   async getTodosPage({
@@ -66,37 +66,34 @@ export class MMKVTodoRepository implements TodoRepository {
     };
   }
 
-  async addTodo(todo: Todo): Promise<void> {
+  async addTodo(todo: Todo): Promise<Todo> {
     const ids = this.getIds();
     if (!ids.includes(todo.id)) {
       ids.push(todo.id);
       storage.set(TODO_IDS_KEY, JSON.stringify(ids));
     }
     const createdDate = new Date();
-    // if (todo.dueDate) {
-    //     todo.dueDate = todo.dueDate.toISOString();
-    // }
     storage.set(
       TODO_BY_ID_KEY(todo.id),
-      JSON.stringify({ ...todo, createdDate: createdDate.toISOString() })
+      JSON.stringify({ ...todo, createdDate: createdDate.toISOString() }),
     );
+    return todo;
   }
 
-  async updateTodo(todo: Todo): Promise<void> {
-    const existing = await this.getById(todo.id);
-    if (!existing) return;
+  async updateTodo(todo: Todo): Promise<Todo> {
     const updatedDate = new Date();
     storage.set(
       TODO_BY_ID_KEY(todo.id),
       JSON.stringify({
         ...todo,
         updatedDate: updatedDate.toISOString(),
-      })
+      }),
     );
+    return todo;
   }
 
   async deleteTodo(id: string): Promise<void> {
-    const ids = this.getIds().filter((tid) => tid !== id);
+    const ids = this.getIds().filter(tid => tid !== id);
     storage.set(TODO_IDS_KEY, JSON.stringify(ids));
     storage.remove(TODO_BY_ID_KEY(id));
   }

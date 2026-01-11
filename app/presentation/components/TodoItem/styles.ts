@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { fontFamily } from "../../themes/typography";
 
 export default StyleSheet.create({
     container: {
@@ -21,7 +22,6 @@ export default StyleSheet.create({
       alignItems: "center",
     },
     title: {
-      fontWeight: "700",
       fontSize: 16,
       flex: 1,
     },
@@ -33,7 +33,7 @@ export default StyleSheet.create({
       fontSize: 12,
     },
     description: {
-      fontStyle: "italic",
+      fontFamily: fontFamily.italic,
       fontSize: 14,
       marginTop: 2,
     },

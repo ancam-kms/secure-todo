@@ -9,10 +9,12 @@ export default StyleSheet.create({
   },
   emptyText: {
     fontSize: 18,
+    lineHeight: 24,
     fontWeight: "600",
   },
   emptyTextDesc: {
-    fontSize: 14,
+    fontSize: 16,
+    lineHeight: 22,
     fontWeight: "500",
   },
   buttonAddNew: {

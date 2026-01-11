@@ -1,4 +1,5 @@
 import { Platform, StyleSheet } from "react-native";
+import { fontFamily } from "../../themes/typography";
 
 export default StyleSheet.create({
   container: {
@@ -24,6 +25,7 @@ export default StyleSheet.create({
     fontWeight: "600",
     marginBottom: 8,
     color: "#333",
+    fontFamily: fontFamily.bold
   },
   input: {
     borderWidth: 1,
@@ -32,6 +34,7 @@ export default StyleSheet.create({
     padding: 12,
     fontSize: 16,
     backgroundColor: "#f9f9f9",
+    fontFamily: fontFamily.regular
   },
   textArea: {
     height: 100,
@@ -50,13 +53,16 @@ export default StyleSheet.create({
     backgroundColor: "#f9f9f9",
     minHeight: 50,
     justifyContent: "center",
+    fontFamily: fontFamily.regular
   },
   dateText: {
     fontSize: 16,
     color: "#333",
+    fontFamily: fontFamily.regular
   },
   placeholder: {
     color: "#999",
+    fontFamily: fontFamily.regular
   },
   datePickerContainer: {
     marginTop: 8,
@@ -92,6 +98,7 @@ export default StyleSheet.create({
   },
   subtaskInput: {
     flex: 1,
+    fontFamily: fontFamily.regular
   },
   addSubtaskButton: {
     backgroundColor: "#841584",
@@ -110,6 +117,7 @@ export default StyleSheet.create({
     color: "#fff",
     fontSize: 16,
     fontWeight: "600",
+    fontFamily: fontFamily.regular
   },
   addSubtaskButtonTextDisabled: {
     color: "#999",
@@ -156,6 +164,7 @@ export default StyleSheet.create({
     fontSize: 16,
     color: "#333",
     flex: 1,
+    fontFamily: fontFamily.regular
   },
   subtaskTitleCompleted: {
     textDecorationLine: "line-through",
@@ -174,5 +183,6 @@ export default StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     lineHeight: 20,
+    fontFamily: fontFamily.bold
   },
 });

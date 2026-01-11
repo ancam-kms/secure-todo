@@ -1,7 +1,7 @@
 import type { NavigationProp } from "@react-navigation/native";
 import { useFocusEffect } from "@react-navigation/native";
 import React, { useCallback, useMemo, useState } from "react";
-import { Pressable, SafeAreaView, Text, View } from "react-native";
+import { Pressable, SafeAreaView, View } from "react-native";
 import { DeleteTodo } from "../../../application/usecases/todo/commands/deleteTodo";
 import { GetTodosPage } from "../../../application/usecases/todo/queries/getTodosPage";
 import { Todo } from "../../../domain/entities/todo";
@@ -9,6 +9,7 @@ import type { RootStackParamList } from "../../../index";
 import { todoRepository } from "../../../infrastructure";
 import TodoList from "../../components/TodoList";
 import styles from "./styles";
+import AppText from "../../components/AppText";
 
 type Props = {
   navigation: NavigationProp<RootStackParamList>;
@@ -84,7 +85,7 @@ const DashboardScreen: React.FC<Props> = ({ navigation }) => {
       {todos.length > 0 && (
         <View style={styles.buttonWrapper}>
           <Pressable onPress={handleAddTodo} style={styles.buttonAdd}>
-            <Text style={styles.buttonTitle}>+</Text>
+            <AppText style={styles.buttonTitle}>+</AppText>
           </Pressable>
         </View>
       )}

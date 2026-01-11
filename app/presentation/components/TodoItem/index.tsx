@@ -5,9 +5,10 @@ import Reanimated, {
   SharedValue,
   useAnimatedStyle,
 } from 'react-native-reanimated';
-import { Alert, Pressable, Text, View } from 'react-native';
+import { Alert, Pressable, View } from 'react-native';
 import { Todo } from '../../../domain/entities/todo';
 import styles from './styles';
+import AppText from '../AppText';
 
 type Props = {
   todo: Todo;
@@ -32,7 +33,7 @@ const RightAction = ({
   return (
     <Reanimated.View style={styleAnimation}>
       <Pressable style={styles.rightAction} onPress={onPressDelete}>
-        <Text style={styles.rightDeleteText}>Delete</Text>
+        <AppText style={styles.rightDeleteText}>Delete</AppText>
       </Pressable>
     </Reanimated.View>
   );
@@ -88,11 +89,11 @@ export const TodoItem: React.FC<Props> = ({
         <Pressable onPress={_onPressDetail}>
           <View style={styles.container}>
             <View style={styles.headerRow}>
-              <Text style={styles.title}>{todo.title}</Text>
+              <AppText variant="h4" style={styles.title}>{todo.title}</AppText>
             </View>
 
             {todo.description && (
-              <Text style={styles.description}>{todo.description}</Text>
+              <AppText style={styles.description}>{todo.description}</AppText>
             )}
 
             {/* <View style={styles.datesRow}>
@@ -102,9 +103,9 @@ export const TodoItem: React.FC<Props> = ({
             </View> */}
             <View style={styles.datesRow}>
               {todo.subtasks?.length > 0 && (
-                <Text style={styles.dueDate}>
+                <AppText style={styles.dueDate}>
                   Subtasks: {todo.subtasks.length}
-                </Text>
+                </AppText>
               )}
             </View>
           </View>
